@@ -43,7 +43,7 @@ raise 'Invalid album' if album.empty?
 
 should_fail = false
 
-Dir["#{input_folder}/*"]
+Dir["#{input_folder}/**/*"]
   .select {|f| !File.directory? f}
   .each do |f|
     begin
