@@ -33,9 +33,9 @@ album = ARGV[2]
 
 log_debug 'Starting program...'
 
-log_debug "input_folder=#{ARGV[0]}"
-log_debug "artist=#{ARGV[1]}"
-log_debug "album=#{ARGV[2]}"
+log_debug "input_folder=#{input_folder}"
+log_debug "artist=#{artist}"
+log_debug "album=#{album}"
 
 raise 'Input not found' unless Dir.exist?(input_folder)
 raise 'Invalid artist' if artist.empty?
