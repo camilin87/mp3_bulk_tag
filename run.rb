@@ -11,7 +11,7 @@ def log_debug(str)
 end
 
 def configure_tags(filename, artist, album)
-  command = "id3tool -r \"#{artist}\" -a \"#{album}\" \"#{filename}\""
+  command = "mid3v2 -a \"#{artist}\" -A \"#{album}\" \"#{filename}\""
   log_debug command
   result = system(command)
   raise "Processing File Error" unless result == true

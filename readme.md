@@ -10,8 +10,8 @@ ruby ~/devroot/mp3_bulk_tag/run.rb "~/Downloads/Album1" "Ludwig Van Beethoven" "
 
 ## Dependencies  
 
-[id3tool](https://unix.stackexchange.com/a/77004/134094)  
+[mid3v2](https://unix.stackexchange.com/a/131660/134094)  
 
 ```bash
-brew install id3tool
+sudo pip install mutagen
 ```
