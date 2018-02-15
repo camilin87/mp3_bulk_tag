@@ -12,9 +12,19 @@ end
 
 def configure_tags(filename, artist, album)
   command = "mid3v2 -a \"#{artist}\" -A \"#{album}\" \"#{filename}\""
+  log_debug "Processing File #{filename}"
   log_debug command
   result = system(command)
   raise "Processing File Error" unless result == true
+end
+
+def validate_tags(filename, artist, album)
+  command = "mid3v2 \"#{filename}\""
+  log_debug "Verifying File #{filename}"
+  log_debug command
+  output = `#{command}`
+  raise "Artist not found on file" unless output.include?("TPE1=#{artist}")
+  raise "Album not found on file" unless output.include?("TALB=#{album}")
 end
 
 input_folder = ARGV[0]
@@ -38,6 +48,7 @@ Dir["#{input_folder}/*"]
   .each do |f|
     begin
       configure_tags(f, artist, album)
+      validate_tags(f, artist, album)
     rescue Exception => e
       log_debug e
       log_info f
